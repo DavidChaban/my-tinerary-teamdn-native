@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const citiesList = createAsyncThunk ('citieslist', async(id)=>{
-    const res = await axios.get(`https://back-team-dn.onrender.com/api/cities?userId=${id}`)
+    const res = await axios.get(`${data_url}/api/cities?userId=${id}`)
     // console.log(res);
     return {
         citiesAdmlist: res.data.response
@@ -13,7 +13,7 @@ const citiesList = createAsyncThunk ('citieslist', async(id)=>{
 const deleteCities = createAsyncThunk('deleteCities', async (objeto)=>{
     let headers= {headers: {'Authorization':`Bearer ${objeto.newToken}`}}
     try{
-        const res = await axios.delete(`https://back-team-dn.onrender.com/api/cities/${objeto.idCities}`, headers)
+        const res = await axios.delete(`${data_url}/api/cities${objeto.idCities}`, headers)
         console.log(res);
         return{
             success: true,

@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../api/url";
-
+// import { BASE_URL } from "../../api/url";
+const BASE_URL = "https://back-team-dn.onrender.com"
 
 const signin = createAsyncThunk('signin', async(data)=>{
-    let url = `${BASE_URL}/api/auth/signin`
+    let url = `${data_url}/api/auth/signin`
     try{
         const res = await axios.post(url, data)
         // console.log(res.data.response);
@@ -23,7 +23,7 @@ const signin = createAsyncThunk('signin', async(data)=>{
 })
 
 const relogin = createAsyncThunk('relogin', async(token)=>{
-    let url = `${BASE_URL}/api/auth/token`
+    let url = `${data_url}/api/auth/token`
     let headers = {headers: {'Authorization': `Bearer ${token}`}}
     try{
         const res = await axios.post(url, null, headers)
@@ -46,7 +46,7 @@ const relogin = createAsyncThunk('relogin', async(token)=>{
 })
 
 const signout = createAsyncThunk('signout', async(token) => {
-    let url = `${BASE_URL}/api/auth/sign-out`
+    let url = `${data_url}/api/auth/sign-out`
 
     let headers = {headers: {"Authorization": `Bearer ${token}`}}
     try {

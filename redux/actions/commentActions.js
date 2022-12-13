@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../api/url";
+// import { BASE_URL } from "../../api/url";
+// const BASE_URL = "https://back-team-dn.onrender.com"
 
 
 const sendComment = createAsyncThunk('sendComment', async(objeto)=>{
     
     let headers = {headers: {'Authorization': `Bearer ${objeto.newToken}`}}
-    const res = await axios.post(`${BASE_URL}/api/comments/`,objeto.info,headers)
+    const res = await axios.post(`${data_url}/api/comments/`,objeto.info,headers)
     // console.log(res);
         return {
             success: true,
@@ -17,7 +18,7 @@ const sendComment = createAsyncThunk('sendComment', async(objeto)=>{
 const deleteComent = createAsyncThunk('deleteShows', async (objeto)=>{
     
     let headers = {headers: {'Authorization': `Bearer ${objeto.newToken}`}}
-    const res = await axios.delete(`${BASE_URL}/api/comments/${objeto.idComment}`, headers)
+    const res = await axios.delete(`${data_url}/api/comments/${objeto.idComment}`, headers)
     // console.log(res);
     return {
         success: true,
@@ -28,7 +29,7 @@ const deleteComent = createAsyncThunk('deleteShows', async (objeto)=>{
 const editComent = createAsyncThunk('deleteShows', async (objeto)=>{
     
     let headers = {headers: {'Authorization': `Bearer ${objeto.newToken}`}}
-    const resp = await axios.put(`${BASE_URL}/api/comments/${objeto.idComment}`,objeto.info, headers)
+    const resp = await axios.put(`${data_url}/api/comments/${objeto.idComment}`,objeto.info, headers)
     // console.log(resp);
     return {
         success: true,

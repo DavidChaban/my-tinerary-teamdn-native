@@ -1,40 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Signup from './src/components/Signup';
-
+import { NavigationContainer } from "@react-navigation/native";
+import Navi from "./Navigation/Navi";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import MyTabs from "./Navigation/BottomTabs";
 export default function App() {
   return (
-    <View style={styles.container}>
-
-    <View style={styles.viewText}>
-      <Text style={{fontSize: 50}}> Hola xD </Text>
-     </View>
-      <StatusBar style="auto"/>
-        <Signup/>
-      
-
-    </View>
+    <Provider store={store}>
+     
+        <MyTabs/>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  viewText:{
-    display:'flex',
-    backgroundColor: 'red',
-    height: '10%',
-    justifyContent: 'center',
-
-
-  }
-
-
-
-
-
-});
