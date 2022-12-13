@@ -4,7 +4,7 @@ import swal from "sweetalert";
 import { BASE_URL } from "../../api/url";
 const getReaction = createAsyncThunk("getReaction", async (data) => {
     try{
-    const response = await axios.get(`https://back-team-dn.onrender.com/api/reactions?${data.type}=${data.eventid}`);
+    const response = await axios.get(`${data_url}/api/reactions?${data.type}=${data.eventid}`);
     return {
         success: true,
         response: response.data,
@@ -21,7 +21,7 @@ const getUserReactions = createAsyncThunk("getUserReactions", async ({token,id})
     console.log(token ,id)
     let headers = { headers: { Authorization: `Bearer ${token}` } };
     try{
-    const response = await axios.get(`https://back-team-dn.onrender.com/api/reactions?userId=${id}`, headers);
+    const response = await axios.get(`${data_url}/api/reactions?userId=${id}`, headers);
     return {
         success: true,
         response: response.data.data,
@@ -35,7 +35,7 @@ const getUserReactions = createAsyncThunk("getUserReactions", async ({token,id})
 });
 const updateReaction = createAsyncThunk("updateReaction", async ( datos ) => {
     let headers = { headers: { Authorization: `Bearer ${datos.token}` } };    try {
-        const response = await axios.put(`https://back-team-dn.onrender.com/api/reactions?${datos.type}=${datos.id}&name=${datos.name}`,null, headers);
+        const response = await axios.put(`${data_url}/api/reactions?${datos.type}=${datos.id}&name=${datos.name}`,null, headers);
         return response.data.response;
     }
     catch (error) {
@@ -55,7 +55,7 @@ const deleteReaction = createAsyncThunk("deleteReaction", async ( {id, token }) 
     let headers = { headers: { Authorization: `Bearer ${token}` } };
     console.log(id);
     try {
-        const response = await axios.put(`https://back-team-dn.onrender.com/api/reactions/${id}`, null, headers);
+        const response = await axios.put(`${data_url}/api/reactions/${id}`, null, headers);
         return response.data.response;
     }
     catch (error) {

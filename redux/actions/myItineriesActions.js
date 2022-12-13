@@ -3,7 +3,7 @@ import axios from "axios";
 
 /**/
 const itinerariesList = createAsyncThunk ('itinerariesList', async(id)=>{
-    const res = await axios.get(`https://back-team-dn.onrender.com/api/itineraries?`)
+    const res = await axios.get(`${data_url}/api/itineraries?`)
     // console.log(res);
     return {
         itinerariesAdmlist: res.data.response
@@ -14,7 +14,7 @@ const deleteItineraries = createAsyncThunk('deleteItineraries', async (objeto)=>
     console.log(objeto)
     let headers= {headers: {'Authorization':`Bearer ${objeto.newToken.token.user}`}}
     try{
-        const res = await axios.delete(`https://back-team-dn.onrender.com/api/itineraries/${objeto.id}`,headers)
+        const res = await axios.delete(`${data_url}/api/itineraries/${objeto.id}`,headers)
         console.log(res);
         return{
             success: true,
